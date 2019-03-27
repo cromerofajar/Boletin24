@@ -27,7 +27,7 @@ public class Metodos {
         etiqueta2=new JLabel();
         areaTexto1=new JTextField();
         areaTexto2=new JTextField();
-        areaTexto3=new JTextField();
+        areaTexto3=new JTextField("Area de texto");
         lista=new JList();
         panel1.setLayout(null);
         marco.setBounds(300,300, 400, 600);
