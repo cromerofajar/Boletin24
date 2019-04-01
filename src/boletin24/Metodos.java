@@ -2,19 +2,26 @@ package boletin24;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 
 /**
  *
  * @author cromerofajar
  */
-public class Metodos {
+public class Metodos implements ActionListener{
     JFrame marco;
     JPanel panel1,panel2,panel3;
     JButton boton1,boton2,boton3;
     JLabel etiqueta1,etiqueta2;
-    JTextField areaTexto1,areaTexto2,areaTexto3;
+    JTextField areaTexto1,areaTexto3;
+    JPasswordField areaTexto2;
     JList lista;
-    
+    String nombre,curso;
+    int posicion;
     public void crear(){
         marco=new JFrame();
         panel1=new JPanel();
@@ -26,7 +33,7 @@ public class Metodos {
         etiqueta1=new JLabel();
         etiqueta2=new JLabel();
         areaTexto1=new JTextField();
-        areaTexto2=new JTextField();
+        areaTexto2=new JPasswordField();
         areaTexto3=new JTextField("Area de texto");
         lista=new JList();
         panel1.setLayout(null);
@@ -55,7 +62,7 @@ public class Metodos {
         panel1.add(areaTexto2);
         panel1.add(boton1);
         panel1.add(boton2);
-        String[] datosL={"ElementoLista1","\n","ElementoLista2","\n","ElementoLista3"};
+        String[] datosL={"DAM1","ASIR1","DAM2","ASIR2"};
         lista.setListData(datosL);
         lista.setBounds(25, 20, 130, 170);
         lista.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -66,5 +73,25 @@ public class Metodos {
         panel2.add(boton3);
         panel2.add(areaTexto3);
         
+        boton2.addActionListener(this);
+        boton3.addActionListener(this);
+        
     }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource().equals(boton2)){
+            areaTexto1.setText("");
+            areaTexto2.setText("");
+        }
+        if(e.getSource().equals(boton3)){
+            nombre=areaTexto1.getText();
+            areaTexto3.setText(nombre+"\n"+lista.getSelectedValuesList());
+    
+            }
+    }
+    
+    
+    
+    
 }
